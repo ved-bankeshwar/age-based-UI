@@ -63,7 +63,7 @@ export const AgeCamera = forwardRef<AgeCameraHandle, { onAccept: (age: number) =
       await video.play();
       setStatus("live");
 
-      const { default: Human } = (await import("../../../node_modules/@vladmandic/human/dist/human.esm.js")) as {
+      const { default: Human } = (await import("../../../node_modules/@vladmandic/human/dist/human.esm.js")) as unknown as {
         default: new (config: object) => {
           load: () => Promise<void>;
           detect: (input: HTMLVideoElement) => Promise<{ face: { age?: number }[] }>;

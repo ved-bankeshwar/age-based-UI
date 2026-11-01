@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import { HARD_REFRESH_KEY, PERSONALIZATION_STORAGE_KEY } from "@/lib/storage";
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col font-sans antialiased">
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         <Providers>
-          <ShellGate>{children}</ShellGate>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <ShellGate>{children}</ShellGate>
+          </Suspense>
         </Providers>
       </body>
     </html>
