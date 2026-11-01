@@ -64,7 +64,7 @@ export function ProfilePanel() {
 
 export function HelpList() {
   const topics = [
-    { href: "/profile", title: "Change how Bite looks", body: "Enter a different age, or use Viewing as at the top of the page." },
+    { href: "/admin", title: "Change how Bite looks", body: "Set an age on the admin page, or use Viewing as at the top of that page." },
     { href: "/search", title: "Search for food", body: "Look up a dish or a restaurant." },
     { href: "/orders", title: "Orders", body: "Demo orders stay on this device." },
     { href: "/offers", title: "Offers", body: "See the current Bite offers." },

@@ -24,16 +24,19 @@ export function Wordmark() {
 }
 
 export function DemoAgeSwitcher() {
-  const { ageGroup, chooseGroup } = usePersonalization();
+  const { ageGroup, enteredAge, chooseGroup, openCameraPrompt } = usePersonalization();
   return (
     <div className="demo-switcher">
       <div className="demo-switcher-inner" role="radiogroup" aria-label="Viewing as">
-        <span style={{ fontWeight: 700 }}>Viewing as</span>
+        <span style={{ fontWeight: 700 }}>Viewing as{enteredAge ? ` · ${enteredAge}` : ""}</span>
         {ageGroupOrder.map((group) => (
           <button key={group} type="button" role="radio" aria-checked={ageGroup === group} onClick={() => chooseGroup(group, "switcher")}>
             {ageProfiles[group].label}
           </button>
         ))}
+        <button type="button" className="camera-link" onClick={openCameraPrompt}>
+          Camera
+        </button>
       </div>
     </div>
   );
@@ -105,17 +108,18 @@ export function Footer() {
           <Link href="/help">Help</Link>
           <Link href="/offers">Offers</Link>
           <Link href="/profile">Profile</Link>
+          <Link href="/admin">Admin</Link>
         </nav>
       </div>
     </footer>
   );
 }
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({ children, showAgeBar = false }: { children: React.ReactNode; showAgeBar?: boolean }) {
   return (
     <>
       <div className="sticky top-0 z-40">
-        <DemoAgeSwitcher />
+        {showAgeBar ? <DemoAgeSwitcher /> : null}
         <Header />
       </div>
       <main className="flex-1">{children}</main>

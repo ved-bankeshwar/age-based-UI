@@ -1,4 +1,5 @@
 export const PERSONALIZATION_STORAGE_KEY = "bite.personalization.v1";
+export const HARD_REFRESH_KEY = "bite.hardRefresh";
 export const CART_STORAGE_KEY = "bite.cart.v1";
 export const ORDERS_STORAGE_KEY = "bite.orders.v1";
 

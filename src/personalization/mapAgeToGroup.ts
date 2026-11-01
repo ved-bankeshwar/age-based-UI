@@ -1,7 +1,7 @@
 import { ageBoundaries } from "./ageBoundaries";
 import type { AgeGroup, SubmitAgeResult } from "./types";
 
-const groupOrder: AgeGroup[] = ["young", "adult", "older"];
+const groupOrder: AgeGroup[] = ["toddler", "child", "teen", "young", "adult", "older", "elder"];
 
 export function interpretAge(age: number): SubmitAgeResult {
   if (!Number.isInteger(age) || age < 1 || age > 120) {
@@ -14,10 +14,6 @@ export function interpretAge(age: number): SubmitAgeResult {
     if (age >= bounds.min && age <= max) {
       return { ok: true, ageGroup: group };
     }
-  }
-
-  if (age < ageBoundaries.young.min) {
-    return { ok: false, reason: "underage" };
   }
 
   return { ok: false, reason: "invalid" };

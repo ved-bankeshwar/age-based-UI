@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
-import { PERSONALIZATION_STORAGE_KEY } from "@/lib/storage";
+import { HARD_REFRESH_KEY, PERSONALIZATION_STORAGE_KEY } from "@/lib/storage";
 import { Providers } from "@/state/Providers";
 import { ShellGate } from "@/components/layout/ShellGate";
 import "./globals.css";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Bite is a fictional food delivery demo with an age-adaptive interface.",
 };
 
-const bootScript = `(function(){try{var raw=localStorage.getItem(${JSON.stringify(PERSONALIZATION_STORAGE_KEY)});if(!raw)return;var data=JSON.parse(raw);if(data.ageGroup==="young"||data.ageGroup==="adult"||data.ageGroup==="older"){document.documentElement.dataset.ageGroup=data.ageGroup;}}catch(e){}})();`;
+const bootScript = `(function(){try{var raw=localStorage.getItem(${JSON.stringify(PERSONALIZATION_STORAGE_KEY)});if(raw){var data=JSON.parse(raw);var groups={toddler:1,child:1,teen:1,young:1,adult:1,older:1,elder:1};if(groups[data.ageGroup])document.documentElement.dataset.ageGroup=data.ageGroup;}}catch(e){}window.addEventListener("keydown",function(e){var key=e.key||"";var hard=(e.ctrlKey||e.metaKey)&&e.shiftKey&&(key==="r"||key==="R");if(!hard&&e.ctrlKey&&key==="F5")hard=true;if(!hard)return;try{sessionStorage.setItem(${JSON.stringify(HARD_REFRESH_KEY)},"1");}catch(err){}},true);})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -44,7 +44,8 @@
   --danger: #9c2f2f;
 }
 
-[data-age-group="young"] {
+[data-age-group="young"],
+[data-age-group="teen"] {
   --font-scale: 1;
   --base-font: 16px;
   --line-height: 1.45;
@@ -87,7 +88,10 @@
   --danger: #9c2f2f;
 }
 
-[data-age-group="older"] {
+[data-age-group="toddler"],
+[data-age-group="child"],
+[data-age-group="older"],
+[data-age-group="elder"] {
   --font-scale: 1.3125;
   --base-font: 21px;
   --line-height: 1.55;
@@ -389,6 +393,8 @@ a {
 .demo-switcher {
   background: var(--accent-soft);
   border-bottom: var(--border-width) solid var(--border);
+  font-size: 14px;
+  line-height: 1.3;
 }
 
 .demo-switcher-inner {
@@ -400,12 +406,13 @@ a {
 }
 
 .demo-switcher button {
-  min-height: var(--button-height);
-  padding-inline: var(--button-px);
+  min-height: 36px;
+  padding-inline: 12px;
   border-radius: 999px;
-  border: var(--border-width) solid var(--border);
+  border: 1px solid var(--border);
   background: var(--surface);
   cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -413,6 +420,21 @@ a {
   background: var(--accent);
   color: var(--accent-contrast);
   border-color: var(--accent);
+}
+
+.demo-switcher .camera-link {
+  margin-left: auto;
+  min-height: 36px;
+  padding-inline: 12px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: var(--border-width) solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .site-footer {
@@ -588,7 +610,8 @@ a {
   transition: transform var(--motion-duration) ease;
 }
 
-[data-age-group="young"] [data-card="true"]:hover {
+[data-age-group="young"] [data-card="true"]:hover,
+[data-age-group="teen"] [data-card="true"]:hover {
   transform: translateY(-3px);
 }
 

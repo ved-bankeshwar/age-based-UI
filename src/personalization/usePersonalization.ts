@@ -9,9 +9,12 @@ export interface PersonalizationContextValue {
   source: PersonalizationSource | null;
   profile: UIProfile | null;
   ready: boolean;
-  submitAge: (age: number) => SubmitAgeResult;
+  cameraPromptOpen: boolean;
+  submitAge: (age: number, source?: PersonalizationSource) => SubmitAgeResult;
   chooseGroup: (group: AgeGroup, source: PersonalizationSource) => void;
   clearPersonalization: () => void;
+  openCameraPrompt: () => void;
+  closeCameraPrompt: () => void;
 }
 
 export const PersonalizationContext = createContext<PersonalizationContextValue | null>(null);

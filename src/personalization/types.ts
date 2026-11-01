@@ -1,6 +1,6 @@
-export type AgeGroup = "young" | "adult" | "older";
+export type AgeGroup = "toddler" | "child" | "teen" | "young" | "adult" | "older" | "elder";
 
-export type PersonalizationSource = "manual" | "switcher";
+export type PersonalizationSource = "manual" | "switcher" | "estimate";
 
 export type Density = "high" | "medium" | "low";
 export type MotionLevel = "full" | "normal" | "reduced";
