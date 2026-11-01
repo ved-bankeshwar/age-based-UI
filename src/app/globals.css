@@ -121,17 +121,32 @@
   --motion-duration: 1ms;
   --motion-distance: 0px;
   --shadow: none;
-  --bg: #fffcf8;
+  --bg: #fffdf9;
   --surface: #ffffff;
-  --text: #140e0a;
-  --muted: #3f362f;
-  --border: #2a241f;
-  --accent: #8a5a00;
-  --accent-contrast: #1c1408;
-  --accent-soft: #f3dca0;
-  --focus: #140e0a;
+  --text: #16120e;
+  --muted: #3a322c;
+  --border: #2c241c;
+  --accent: #7a4e00;
+  --accent-contrast: #ffffff;
+  --accent-soft: #f6e2a8;
+  --focus: #16120e;
   --positive: #0e5a34;
   --danger: #7a1e1e;
+}
+
+[data-age-group="toddler"],
+[data-age-group="elder"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #000000;
+  --muted: #1a1a1a;
+  --border: #000000;
+  --accent: #4a2800;
+  --accent-contrast: #ffffff;
+  --accent-soft: #ffd56a;
+  --focus: #000000;
+  --positive: #064d28;
+  --danger: #7a1010;
 }
 
 @theme inline {
@@ -641,7 +656,34 @@ dialog::backdrop {
   padding-inline: var(--space-3);
   border-radius: 999px;
   background: var(--surface);
+  color: var(--text);
   border: var(--border-width) solid var(--border);
   text-decoration: none;
   font-weight: 600;
+}
+
+.home-band {
+  padding: var(--space-5);
+  border-radius: var(--radius-card);
+  border: var(--border-width) solid var(--border);
+}
+
+.home-band-accent {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.home-band-accent .search-field svg {
+  color: var(--text);
+}
+
+.home-band-surface {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.home-band-soft {
+  background: var(--accent-soft);
+  color: var(--text);
 }

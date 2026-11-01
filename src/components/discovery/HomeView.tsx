@@ -10,8 +10,8 @@ import { CategoryList, PromoStack, RestaurantSection } from "./catalog";
 export function HeroSearch() {
   const { profile } = usePersonalization();
   return (
-    <section className="stack">
-      <h1 style={{ fontSize: "var(--text-2xl)", fontWeight: 700, letterSpacing: "-0.03em" }}>What are you craving today?</h1>
+    <section className="home-band home-band-accent stack">
+      <h1 style={{ fontSize: "var(--text-2xl)", fontWeight: 700 }}>What are you craving today?</h1>
       <SearchBar />
       {profile?.density === "high" ? (
         <div className="chip-row">
@@ -48,14 +48,29 @@ export function HomeView({
   return (
     <div className="page stack-lg">
       <HeroSearch />
-      <CategoryList categories={categories} />
-      <PromoStack offers={offers} />
-      {profile.promotions.maxBanners === 0 ? (
-        <Link href="/offers" className="bite-button bite-button-secondary" style={{ alignSelf: "flex-start" }}>View offers</Link>
+      <div className="home-band home-band-surface">
+        <CategoryList categories={categories} />
+      </div>
+      <div className="home-band home-band-soft">
+        {profile.promotions.maxBanners === 0 ? (
+          <Link href="/offers" className="bite-button bite-button-secondary" style={{ alignSelf: "flex-start" }}>View offers</Link>
+        ) : (
+          <PromoStack offers={offers} />
+        )}
+      </div>
+      {profile.promotions.showTrending ? (
+        <div className="home-band home-band-surface">
+          <RestaurantSection title="Trending today" restaurants={trending} />
+        </div>
       ) : null}
-      {profile.promotions.showTrending ? <RestaurantSection title="Trending today" restaurants={trending} /> : null}
-      {profile.promotions.showPopular ? <RestaurantSection title="Popular near you" restaurants={popular} /> : null}
-      <RestaurantSection title="Restaurants" restaurants={homeList} action={{ href: "/restaurants", label: "All restaurants" }} />
+      {profile.promotions.showPopular ? (
+        <div className="home-band home-band-surface">
+          <RestaurantSection title="Popular near you" restaurants={popular} />
+        </div>
+      ) : null}
+      <div className="home-band home-band-surface">
+        <RestaurantSection title="Restaurants" restaurants={homeList} action={{ href: "/restaurants", label: "All restaurants" }} />
+      </div>
     </div>
   );
 }
